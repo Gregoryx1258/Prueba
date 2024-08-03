@@ -1,11 +1,3 @@
--- Creacion de tablas- corregidas
-
-create table asistencia (
-    fecha date,
-    matricula_id number not null
-);
---fk matricula_id
-
 
 create table curso (
     curso_id number not null,
@@ -16,8 +8,8 @@ create table curso (
     constraint pk_curso primary key (curso_id)
 );
 --fk periodo_id y universidad_id
-
-
+----------------------------------------
+-------------------------------------------
 create table universidad (
     universidad_id number not null,
     nombre varchar2(100),
@@ -98,37 +90,7 @@ create table periodo (
 
 
 
---Asistencia-Matricula
-alter table asistencia
-add constraint fk_matricula_asistencia
-foreign key (matricula_id)
-references matricula(matricula_id);
 
---Curso-Periodo
-alter table curso
-add constraint fk_periodo_curso
-foreign key (periodo_id)
-references periodo(periodo_id);
-
---Curso-Universidad
-alter table curso
-add constraint fk_universidad_curso
-foreign key (universidad_id)
-references universidad(universidad_id);
-
---Calificacion-Matricula
-alter table calificacion
-add constraint fk_matricula_calificacion
-foreign key (matricula_id)
-references matricula(matricula_id);
-
---Calificacion-Rubro
-alter table calificacion
-add constraint fk_rubro_calificacion
-foreign key (calificacionrubro_id)
-references rubro(calificacionrubro_id);
-
---Curso-Rubro
 alter table rubro
 add constraint fk_curso_rubro
 foreign key (curso_id)
